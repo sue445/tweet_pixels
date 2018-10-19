@@ -3,10 +3,14 @@
 require "bundler/setup"
 require "dotenv"
 
+require_relative "../lib/twilog"
+
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
 Dotenv.load
+
+@twilog = Twilog.new(ENV["TWITTER_ID"])
 
 require "irb"
 IRB.start(__FILE__)
