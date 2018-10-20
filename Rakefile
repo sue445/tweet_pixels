@@ -9,14 +9,17 @@ task :environment do
   )
 end
 
+desc "update yesterday tweets"
 task :update_yesterday => :environment do
   @tweet_pixels.update_yesterday
 end
 
+desc "update today tweets"
 task :update_today => :environment do
   @tweet_pixels.update_today
 end
 
+desc "update tweets (since 1 years ago)"
 task :update_multi => :environment do
   @tweet_pixels.update_multi
 end
