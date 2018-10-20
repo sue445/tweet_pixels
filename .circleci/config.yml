@@ -1,0 +1,86 @@
+version: 2.1
+
+default: &default
+  docker:
+    - image: circleci/ruby:2.5.1
+  working_directory: ~/app
+
+commands:
+  setup_bundle:
+    description: "Setup bundle with cache"
+    steps:
+      - restore_cache:
+          keys:
+            - v1-bundle-{{ checksum "Gemfile.lock" }}
+            - v1-bundle
+
+      - run:
+          name: Setup bundle
+          command: |
+            set -xe
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            bundle clean
+
+            # Resolve bundler version difference between Gemfile.lock and pre-installed in CI
+            gem install restore_bundled_with --no-document
+            restore-bundled-with
+
+      - save_cache:
+          key: v1-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/app/vendor/bundle
+
+jobs:
+  build:
+    <<: *default
+
+    steps:
+      - checkout
+      - setup_bundle
+      - run: bundle exec rake update_today
+      - run: bundle exec rake update_yesterday
+
+  update_yesterday:
+    <<: *default
+
+    steps:
+      - checkout
+      - setup_bundle
+      - run: bundle exec rake update_yesterday
+
+  update_today:
+    <<: *default
+
+    steps:
+      - checkout
+      - setup_bundle
+      - run: bundle exec rake update_today
+
+workflows:
+  version: 2
+
+  build:
+    jobs:
+      - build
+
+  update_today:
+    triggers:
+      - schedule:
+          cron: "0 * * * *"
+          filters:
+            branches:
+              only: master
+
+    jobs:
+      - update_today
+
+  update_yesterday:
+    triggers:
+      - schedule:
+          cron: "1 0 * * *"
+          filters:
+            branches:
+              only: master
+
+    jobs:
+      - update_yesterday
