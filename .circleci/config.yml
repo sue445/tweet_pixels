@@ -77,7 +77,8 @@ workflows:
   update_yesterday:
     triggers:
       - schedule:
-          cron: "1 0 * * *"
+        # JST 0:05
+          cron: "5 15 * * *"
           filters:
             branches:
               only: master
