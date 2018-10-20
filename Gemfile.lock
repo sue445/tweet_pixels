@@ -24,6 +24,7 @@ GEM
       faraday_curl
       faraday_middleware
       hashie
+    rake (12.3.1)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
@@ -35,6 +36,7 @@ DEPENDENCIES
   activesupport
   dotenv
   pixela
+  rake
 
 BUNDLED WITH
    1.16.6
