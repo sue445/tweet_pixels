@@ -4,6 +4,7 @@ require "bundler/setup"
 require "dotenv"
 
 require_relative "../lib/twilog"
+require_relative "../lib/tweet_pixles"
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
@@ -11,6 +12,13 @@ require_relative "../lib/twilog"
 Dotenv.load
 
 @twilog = Twilog.new(ENV["TWITTER_ID"])
+
+@tweet_pixels = TweetPixels.new(
+  twitter_id:      ENV["TWITTER_ID"],
+  pixela_username: ENV["PIXELA_USERNAME"],
+  pixela_token:    ENV["PIXELA_TOKEN"],
+  pixela_graph_id: ENV["PIXELA_GRAPH_ID"],
+)
 
 require "irb"
 IRB.start(__FILE__)
