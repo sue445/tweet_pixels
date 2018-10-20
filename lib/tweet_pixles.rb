@@ -39,6 +39,10 @@ class TweetPixels
     update(Date.current - 1)
   end
 
+  def update_today
+    update(Date.current)
+  end
+
   def update(date)
     tweet = twilog.stat_tweets_count[date] || 0
     graph.pixel(date).create_or_update(quantity: tweet)
