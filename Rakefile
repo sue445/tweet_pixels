@@ -1,4 +1,7 @@
 task :environment do
+  require "dotenv"
+  Dotenv.load
+
   require_relative "./lib/tweet_pixles"
 
   @tweet_pixels = TweetPixels.new(
