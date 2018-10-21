@@ -11,14 +11,16 @@ require_relative "../lib/tweet_pixles"
 
 Dotenv.load
 
-@twilog = Twilog.new(ENV["TWITTER_ID"])
-
 @tweet_pixels = TweetPixels.new(
   twitter_id:      ENV["TWITTER_ID"],
   pixela_username: ENV["PIXELA_USERNAME"],
   pixela_token:    ENV["PIXELA_TOKEN"],
   pixela_graph_id: ENV["PIXELA_GRAPH_ID"],
 )
+
+@twilog = @tweet_pixels.twilog
+@client = @tweet_pixels.client
+@graph  = @tweet_pixels.graph
 
 require "irb"
 IRB.start(__FILE__)

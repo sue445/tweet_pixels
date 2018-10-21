@@ -3,22 +3,31 @@
 
 [![CircleCI](https://circleci.com/gh/sue445/tweet_pixels/tree/master.svg?style=svg&circle-token=29379467733b2fddc654d5a50208b6b9f593e472)](https://circleci.com/gh/sue445/tweet_pixels/tree/master)
 
+## Features
+* Regularly update the graph of tweet count. (daily and hourly)
+
 ## Requirements
 * [Pixela](https://pixe.la/)
 * [Twilog](https://twilog.org/)
 
 ## Usage
 ### 1. Register Pixela and create graph
+e.g)
+
+```bash
+cp .env.example .env
+vi .env
+bundle install --path=vendor/bundle
+
+./bin/console
+```
+
 ```ruby
-require "pixela"
-
-client = Pixela::Client.new(username: "YOUR_NAME", token: "YOUR_TOKEN")
-
 # register
-client.create_user(agree_terms_of_service: true, not_minor: true)
+@client.create_user(agree_terms_of_service: true, not_minor: true)
 
 # create graph
-client.graph("tweets").create(name: "Daily tweets", unit: "Tweets", type: "int", color: "sora")
+@graph.create(name: "Daily tweets", unit: "Tweets", type: "int", color: "sora")
 ```
 
 ### 2. Register Environment Variables to CircleCI
@@ -29,9 +38,13 @@ client.graph("tweets").create(name: "Daily tweets", unit: "Tweets", type: "int",
 
 ![CircleCI](img/circleci.png)
 
-## Development
-### Setup
-```bash
-cp .env.example .env
-vi .env
+### 3. Register a GitHub cache url (optional)
+Register a GitHub cache url (e.g. `https://camo.githubusercontent.com/xxxxxxxxxx`) after paste a badge to GitHub
+
+e.g)
+
+```ruby
+@graph.update(name: "Daily tweets", unit: "Tweets", color: "sora", purge_cache_urls: "https://camo.githubusercontent.com/xxxxxxxxxx")
 ```
+
+see https://github.com/a-know/Pixela/releases/tag/v1.1.0
