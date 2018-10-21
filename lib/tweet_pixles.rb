@@ -18,7 +18,7 @@ module PixelaExt
 end
 
 class TweetPixels
-  attr_reader :twilog, :graph
+  attr_reader :twilog, :client, :graph
 
   using PixelaExt
 
@@ -29,8 +29,8 @@ class TweetPixels
 
     @twilog = Twilog.new(twitter_id)
 
-    client = Pixela::Client.new(username: pixela_username, token: pixela_token)
-    @graph = client.graph(pixela_graph_id)
+    @client = Pixela::Client.new(username: pixela_username, token: pixela_token)
+    @graph = @client.graph(pixela_graph_id)
 
     Time.zone = "Tokyo"
   end
