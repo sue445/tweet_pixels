@@ -38,7 +38,6 @@ jobs:
       - checkout
       - setup_bundle
       - run: bundle exec rake update_today
-      - run: bundle exec rake update_yesterday
 
   update_yesterday:
     <<: *default
@@ -66,7 +65,9 @@ workflows:
   update_today:
     triggers:
       - schedule:
-          cron: "0 * * * *"
+          # https://circleci.com/docs/2.0/workflows/#specifying-a-valid-schedule
+          # Note: Cron step syntax (for example, */1, */20) is not supported.      
+          cron: "0 0,6,12,18 * * *"
           filters:
             branches:
               only: master
