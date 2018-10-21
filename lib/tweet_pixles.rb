@@ -47,12 +47,14 @@ class TweetPixels
     twilog.update
     tweet = twilog.stat_tweets_count[date] || 0
     graph.pixel(date).create_or_update(quantity: tweet)
+    puts "date=#{date}, quantity=#{tweet}"
   end
 
   def update_multi(start_date: 1.years.ago.to_date, end_date: Date.current)
     twilog.update
     twilog.stat_tweets_count.select{ |date, _| (start_date..end_date).include?(date) }.each do |date, tweet|
       graph.pixel(date).create_or_update(quantity: tweet)
+      puts "date=#{date}, quantity=#{tweet}"
     end
   end
 end
