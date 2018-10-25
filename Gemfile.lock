@@ -19,7 +19,7 @@ GEM
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
     multipart-post (2.0.0)
-    pixela (0.5.0)
+    pixela (0.5.1)
       faraday
       faraday_curl
       faraday_middleware
