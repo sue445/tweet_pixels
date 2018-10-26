@@ -44,7 +44,7 @@ Register a GitHub cache url (e.g. `https://camo.githubusercontent.com/xxxxxxxxxx
 e.g)
 
 ```ruby
-@graph.update(name: "Daily tweets", unit: "Tweets", color: "sora", purge_cache_urls: "https://camo.githubusercontent.com/xxxxxxxxxx")
+@graph.update(purge_cache_urls: "https://camo.githubusercontent.com/xxxxxxxxxx")
 ```
 
 see https://github.com/a-know/Pixela/releases/tag/v1.1.0
