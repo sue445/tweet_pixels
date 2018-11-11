@@ -1,58 +1,40 @@
 version: 2.1
 
-default: &default
-  docker:
-    - image: circleci/ruby:2.5.3
-  working_directory: ~/app
+orbs:
+  ruby-orbs: sue445/ruby-orbs@volatile
 
-commands:
-  setup_bundle:
-    description: "Setup bundle with cache"
-    steps:
-      - restore_cache:
-          keys:
-            - v1-bundle-{{ checksum "Gemfile.lock" }}
-            - v1-bundle
-
-      - run:
-          name: Setup bundle
-          command: |
-            set -xe
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-            bundle clean
-
-            # Resolve bundler version difference between Gemfile.lock and pre-installed in CI
-            gem install restore_bundled_with --no-document
-            restore-bundled-with
-
-      - save_cache:
-          key: v1-bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ~/app/vendor/bundle
+executors:
+  default:
+    docker:
+      - image: circleci/ruby:2.5.3
+    working_directory: ~/app
 
 jobs:
   build:
-    <<: *default
+    executor:
+      name: default
 
     steps:
       - checkout
-      - setup_bundle
+      - ruby-orbs/bundle-install
       - run: bundle exec rake update_today
 
   update_yesterday:
-    <<: *default
+    executor:
+      name: default
 
     steps:
       - checkout
-      - setup_bundle
+      - ruby-orbs/bundle-install
       - run: bundle exec rake update_yesterday
 
   update_today:
-    <<: *default
+    executor:
+      name: default
 
     steps:
       - checkout
-      - setup_bundle
+      - ruby-orbs/bundle-install
       - run: bundle exec rake update_today
 
 workflows:
@@ -66,7 +48,7 @@ workflows:
     triggers:
       - schedule:
           # https://circleci.com/docs/2.0/workflows/#specifying-a-valid-schedule
-          # Note: Cron step syntax (for example, */1, */20) is not supported.      
+          # Note: Cron step syntax (for example, */1, */20) is not supported.
           cron: "0 3,9,15,21 * * *" # 0 */6 * * * (JST)
           filters:
             branches:
