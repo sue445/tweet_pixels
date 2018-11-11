@@ -3,14 +3,16 @@ version: 2.1
 orbs:
   ruby-orbs: sue445/ruby-orbs@volatile
 
-default: &default
-  docker:
-    - image: circleci/ruby:2.5.3
-  working_directory: ~/app
+executors:
+  default:
+    docker:
+      - image: circleci/ruby:2.5.3
+    working_directory: ~/app
 
 jobs:
   build:
-    <<: *default
+    executor:
+      name: default
 
     steps:
       - checkout
@@ -18,7 +20,8 @@ jobs:
       - run: bundle exec rake update_today
 
   update_yesterday:
-    <<: *default
+    executor:
+      name: default
 
     steps:
       - checkout
@@ -26,7 +29,8 @@ jobs:
       - run: bundle exec rake update_yesterday
 
   update_today:
-    <<: *default
+    executor:
+      name: default
 
     steps:
       - checkout
