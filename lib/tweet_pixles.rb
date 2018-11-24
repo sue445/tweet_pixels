@@ -3,24 +3,8 @@ require "active_support/all"
 
 require_relative "./twilog"
 
-module PixelaExt
-  refine(Pixela::Pixel) do
-    def create_or_update(quantity:)
-      create(quantity: quantity)
-    rescue Pixela::PixelaError => error
-      unless error.message.include?("This date pixel already exist")
-        raise
-      end
-
-      update(quantity: quantity)
-    end
-  end
-end
-
 class TweetPixels
   attr_reader :twilog, :client, :graph
-
-  using PixelaExt
 
   def initialize(twitter_id:, pixela_username:, pixela_token:, pixela_graph_id:)
     raise "pixela_username is required" unless pixela_username
@@ -46,7 +30,7 @@ class TweetPixels
   def update(date)
     twilog.update
     tweet = twilog.stat_tweets_count[date] || 0
-    graph.pixel(date).create_or_update(quantity: tweet)
+    graph.pixel(date).update(quantity: tweet)
     puts "date=#{date}, quantity=#{tweet}"
   end
 
