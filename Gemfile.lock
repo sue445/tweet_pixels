@@ -7,7 +7,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     concurrent-ruby (1.1.4)
-    dotenv (2.6.0)
+    dotenv (2.7.1)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     faraday_curl (0.0.2)
