@@ -38,6 +38,9 @@ bundle install --path=vendor/bundle
 
 ![CircleCI](img/circleci.png)
 
+For third party orbs, set 'Allow Uncertified Orbs' option in organization security settings.
+See https://circleci.com/docs/2.0/orbs-faq/#using-3rd-party-orbs.
+
 ### 3. Register a GitHub cache url (optional)
 Register a GitHub cache url (e.g. `https://camo.githubusercontent.com/xxxxxxxxxx`) after paste a badge to GitHub
 
