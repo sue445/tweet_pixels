@@ -14,12 +14,12 @@ class Twilog
 
   def update
     # OpenURI::HTTPError (403 Forbidden) when no User-Agent
-    open("https://twilog.org/update.rb?id=#{twitter_id}&order=&filter=&kind=reg", "User-Agent" => USER_AGENT)
+    URI.open("https://twilog.org/update.rb?id=#{twitter_id}&order=&filter=&kind=reg", "User-Agent" => USER_AGENT)
   end
 
   # @return [Hash<Date, Integer>]
   def stat_tweets_count
-    html = open("https://twilog.org/#{twitter_id}/stats", "User-Agent" => USER_AGENT).read
+    html = URI.open("https://twilog.org/#{twitter_id}/stats", "User-Agent" => USER_AGENT).read
 
     m1 = %r{ar_data\[1\]\s*=\s*\[(.+)\];}.match(html)
     ar_data1 = m1.captures[0]
