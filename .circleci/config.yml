@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   ruby-orbs: sue445/ruby-orbs@volatile
-  slack:     circleci/slack@4.0.3
+  slack:     circleci/slack@3
 
 executors:
   default:
