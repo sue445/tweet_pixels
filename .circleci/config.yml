@@ -43,9 +43,7 @@ jobs:
       - checkout
       - ruby-orbs/bundle-install
       - run: bundle exec rake update_today
-      - slack/notify:
-          event: fail
-          template: basic_fail_1
+      - slack/notify-on-failure
 
 workflows:
   version: 2
