@@ -9,7 +9,7 @@ GEM
       zeitwerk (~> 2.3)
     concurrent-ruby (1.1.7)
     dotenv (2.7.6)
-    faraday (1.1.0)
+    faraday (1.2.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     faraday_curl (0.0.2)
