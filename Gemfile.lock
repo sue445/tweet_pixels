@@ -32,7 +32,7 @@ GEM
       faraday_curl
       faraday_middleware
       hashie
-    rake (13.0.5)
+    rake (13.0.6)
     ruby2_keywords (0.0.4)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
