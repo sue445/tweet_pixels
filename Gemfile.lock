@@ -7,7 +7,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     concurrent-ruby (1.1.10)
-    dotenv (2.8.0)
+    dotenv (2.8.1)
     faraday (2.0.1)
       faraday-net_http (~> 2.0)
       ruby2_keywords (>= 0.0.4)
