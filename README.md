@@ -9,7 +9,7 @@
 
 ## Requirements
 * [Pixela](https://pixe.la/)
-* [Twilog](https://twilog.org/)
+* [Twilog](https://twilog.togetter.com/)
 
 ## Usage
 ### 1. Register Pixela and create graph
