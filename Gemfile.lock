@@ -18,7 +18,8 @@ GEM
     dotenv (2.8.1)
     drb (2.2.0)
       ruby2_keywords
-    faraday (2.7.4)
+    faraday (2.8.1)
+      base64
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-mashify (0.1.1)
@@ -32,7 +33,7 @@ GEM
       concurrent-ruby (~> 1.0)
     minitest (5.20.0)
     mutex_m (0.2.0)
-    pixela (3.1.0)
+    pixela (3.2.0)
       faraday (>= 2.0.0)
       faraday-mashify
       faraday_curl
