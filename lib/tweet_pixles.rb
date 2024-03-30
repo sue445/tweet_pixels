@@ -31,7 +31,7 @@ class TweetPixels
 
   def update(date)
     twilog.update
-    tweet = twilog.stat_tweets_count[date] || 0
+    tweet = twilog.recent_tweets_count[date] || 0
 
     with_retry do
       graph.pixel(date).update(quantity: tweet)
@@ -42,7 +42,7 @@ class TweetPixels
 
   def update_multi(start_date: 1.years.ago.to_date, end_date: Date.current)
     twilog.update
-    twilog.stat_tweets_count.select{ |date, _| (start_date..end_date).include?(date) }.each do |date, tweet|
+    twilog.recent_tweets_count.select{ |date, _| (start_date..end_date).include?(date) }.each do |date, tweet|
       with_retry do
         graph.pixel(date).update(quantity: tweet)
       end
