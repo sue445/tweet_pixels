@@ -23,24 +23,6 @@ class Twilog
   end
 
   def update
-    Capybara.register_driver :chrome_headless do |app|
-      client = Selenium::WebDriver::Remote::Http::Default.new
-      client.read_timeout = 120
-
-      chrome_options = { args: DEFAULT_CHROME_OPTIONS_ARGS }
-
-      opts = Selenium::WebDriver::Chrome::Options.new(profile: nil, **chrome_options)
-
-      Capybara::Selenium::Driver.new(
-        app,
-        browser: :chrome,
-        options: opts,
-        http_client: client,
-      )
-    end
-    session = Capybara::Session.new(:chrome_headless)
-
-    twilog_url = "https://twilog.togetter.com/#{twitter_id}"
     session.visit(twilog_url)
     session.find(:xpath, "//section[@id='side-update']//input[@type='submit' and @class='ub']").click
 
@@ -68,5 +50,33 @@ class Twilog
     dates.zip(daily_tweets).each_with_object({}) do |(date, tweet), hash|
       hash[date] = tweet
     end
+  end
+
+  # @return [Capybara::Session]
+  def session
+    return @session if @session
+
+    Capybara.register_driver :chrome_headless do |app|
+      client = Selenium::WebDriver::Remote::Http::Default.new
+      client.read_timeout = 120
+
+      chrome_options = { args: DEFAULT_CHROME_OPTIONS_ARGS }
+
+      opts = Selenium::WebDriver::Chrome::Options.new(profile: nil, **chrome_options)
+
+      Capybara::Selenium::Driver.new(
+        app,
+        browser: :chrome,
+        options: opts,
+        http_client: client,
+      )
+    end
+
+    @session = Capybara::Session.new(:chrome_headless)
+  end
+
+  # @return [String]
+  def twilog_url
+    "https://twilog.togetter.com/#{twitter_id}"
   end
 end
