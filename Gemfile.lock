@@ -29,14 +29,13 @@ GEM
     dotenv (3.1.0)
     drb (2.2.0)
       ruby2_keywords
-    faraday (2.8.1)
-      base64
-      faraday-net_http (>= 2.0, < 3.1)
-      ruby2_keywords (>= 0.0.4)
+    faraday (2.9.0)
+      faraday-net_http (>= 2.0, < 3.2)
     faraday-mashify (0.1.1)
       faraday (~> 2.0)
       hashie
-    faraday-net_http (3.0.2)
+    faraday-net_http (3.1.0)
+      net-http
     faraday_curl (0.0.2)
       faraday (>= 0.9.0)
     hashie (5.0.0)
@@ -47,10 +46,12 @@ GEM
     mini_portile2 (2.8.5)
     minitest (5.22.2)
     mutex_m (0.2.0)
+    net-http (0.4.1)
+      uri
     nokogiri (1.16.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    pixela (3.2.0)
+    pixela (3.3.0)
       faraday (>= 2.0.0)
       faraday-mashify
       faraday_curl
@@ -71,6 +72,7 @@ GEM
       websocket (~> 1.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    uri (0.13.0)
     websocket (1.2.10)
     xpath (3.2.0)
       nokogiri (~> 1.8)
