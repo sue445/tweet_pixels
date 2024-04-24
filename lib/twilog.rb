@@ -24,7 +24,7 @@ class Twilog
 
   def update
     session.visit(twilog_url)
-    session.find(:xpath, "//section[@id='side-update']//input[@type='submit' and @class='ub']").click
+    session.find(:xpath, "//form[@action='/#{@twitter_id}/fetch']//input[@type='submit']").click
 
     if session.current_url != twilog_url && session.current_url != "#{twilog_url}?status=fetchSuccess"
       raise "current_url is unexpected: #{session.current_url}"
