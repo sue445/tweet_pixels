@@ -26,7 +26,14 @@ class Twilog
     session.visit(twilog_url)
     session.find(:xpath, "//form[@action='/#{@twitter_id}/fetch']//input[@type='submit']").click
 
-    if session.current_url != twilog_url && session.current_url != "#{twilog_url}?status=fetchSuccess"
+    case session.current_url
+    when twilog_url
+      # nop
+    when "#{twilog_url}?status=fetchSuccess"
+      # FIXME: Because side-recent isn't instantly updated...
+      puts "Wait for updating"
+      sleep 10
+    else
       raise "current_url is unexpected: #{session.current_url}"
     end
   end
