@@ -64,7 +64,7 @@ GEM
     rexml (3.2.8)
       strscan (>= 3.0.9)
     rubyzip (2.3.2)
-    selenium-webdriver (4.21.0)
+    selenium-webdriver (4.21.1)
       base64 (~> 0.2)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
