@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (8.0.0.1)
+    activesupport (8.0.1)
       base64
       benchmark (>= 0.3)
       bigdecimal
@@ -47,7 +47,7 @@ GEM
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     json (2.7.2)
-    logger (1.6.2)
+    logger (1.6.3)
     matrix (0.4.2)
     mini_mime (1.1.5)
     mini_portile2 (2.8.6)
