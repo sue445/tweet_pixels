@@ -50,11 +50,11 @@ GEM
     logger (1.6.5)
     matrix (0.4.2)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.6)
+    mini_portile2 (2.8.8)
     minitest (5.25.4)
     net-http (0.4.1)
       uri
-    nokogiri (1.16.5)
+    nokogiri (1.18.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     pixela (3.4.0)
@@ -62,7 +62,7 @@ GEM
       faraday-mashify
       faraday_curl
     public_suffix (5.0.4)
-    racc (1.7.3)
+    racc (1.8.1)
     rack (3.0.12)
     rack-test (2.1.0)
       rack (>= 1.3)
