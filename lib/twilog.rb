@@ -42,7 +42,10 @@ class Twilog
   def recent_tweets_count
     session.visit(twilog_url)
 
-    session.all("#side-recent ul li a").each_with_object({}) do |a, tweets|
+    recent = session.all("#wilog-sidebar .sidebox:nth-of-type(2) ul li a")
+    raise "NotFound recent tweets" if recent.count == 0
+
+    recent.each_with_object({}) do |a, tweets|
       m = /date-([0-9]{6})$/.match(a["href"])
       date = Date.parse("20" + m[1])
       count = a.find("span").text.to_i
