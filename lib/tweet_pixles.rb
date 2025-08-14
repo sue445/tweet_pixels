@@ -51,6 +51,16 @@ class TweetPixels
     end
   end
 
+  # Send tweet count to pixela with specified date
+  # @param date [Date]
+  # @param tweet [Integer]
+  def update_single(date, tweet)
+    with_retry do
+      graph.pixel(date).update(quantity: tweet)
+    end
+    puts "date=#{date}, quantity=#{tweet}"
+  end
+
   private
 
   def with_retry

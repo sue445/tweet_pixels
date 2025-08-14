@@ -26,3 +26,8 @@ desc "update tweets (since 1 years ago)"
 task :update_multi => :environment do
   @tweet_pixels.update_multi
 end
+
+desc "update tweets (with specified date)"
+task :update_single, [:date, :tweet] => :environment do |_, args|
+  @tweet_pixels.update_single(Date.parse(args[:date]), args[:tweet])
+end
