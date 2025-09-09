@@ -4,6 +4,8 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 7
     assignees:
       - sue445
 
@@ -13,6 +15,10 @@ updates:
       interval: daily
       timezone: Asia/Tokyo
       time: "05:00"
+    cooldown:
+      default-days: 7
+      exclude:
+        - pixela
     open-pull-requests-limit: 99
     assignees:
       - sue445
