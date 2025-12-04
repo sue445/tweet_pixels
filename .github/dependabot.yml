@@ -32,4 +32,5 @@ updates:
     cooldown:
       default-days: 7
   ###########################################################
-
+      exclude:
+        - pixela
