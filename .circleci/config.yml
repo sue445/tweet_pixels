@@ -19,6 +19,7 @@ jobs:
       - checkout
       - ruby-orbs/bundle-install
       - run: bundle exec rake update_today
+      - run: bundle exec rake update_yesterday
       - slack/notify-on-failure
 
   update_yesterday:
