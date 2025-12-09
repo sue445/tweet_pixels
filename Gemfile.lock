@@ -96,4 +96,4 @@ DEPENDENCIES
   uri (>= 1.0.3)
 
 BUNDLED WITH
-   2.5.3
+  4.0.0
