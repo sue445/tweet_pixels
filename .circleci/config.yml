@@ -18,8 +18,8 @@ jobs:
     steps:
       - checkout
       - ruby-orbs/bundle-install
-      - run: bundle exec rake update_today
-      - run: bundle exec rake update_yesterday
+      # - run: bundle exec rake update_today
+      # - run: bundle exec rake update_yesterday
       - slack/notify-on-failure
 
   update_yesterday:
@@ -29,7 +29,7 @@ jobs:
     steps:
       - checkout
       - ruby-orbs/bundle-install
-      - run: bundle exec rake update_yesterday
+      # - run: bundle exec rake update_yesterday
       - slack/notify-on-failure
 
   update_today:
@@ -39,7 +39,7 @@ jobs:
     steps:
       - checkout
       - ruby-orbs/bundle-install
-      - run: bundle exec rake update_today
+      # - run: bundle exec rake update_today
       - slack/notify-on-failure
 
 workflows:
