@@ -15,15 +15,20 @@ class Twilog
   ).freeze
 
   attr_reader :twitter_id
+  attr_reader :key
 
   # @param twitter_id [String]
-  def initialize(twitter_id)
+  # @param key [String]
+  def initialize(twitter_id:, key:)
     raise "twitter_id is required" unless twitter_id
+    raise "key is required" unless key
+
     @twitter_id = twitter_id
+    @key = key
   end
 
   def update
-    session.visit(twilog_url)
+    session.visit("#{twilog_url}?key=#{key}")
     session.find(:xpath, "//form[@action='/#{@twitter_id}/fetch']//input[@type='submit']").click
 
     case session.current_url

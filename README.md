@@ -33,6 +33,8 @@ bundle install --path=vendor/bundle
 
 ### 2. Register Environment Variables to CircleCI
 * `TWITTER_ID`
+* `TWILOG_KEY`
+  * c.f. https://x.com/twilog_official/status/2067797353193705853
 * `PIXELA_USERNAME`
 * `PIXELA_TOKEN`
 * `PIXELA_GRAPH_ID`

@@ -8,12 +8,12 @@ class TweetPixels
 
   attr_reader :twilog, :client, :graph
 
-  def initialize(twitter_id:, pixela_username:, pixela_token:, pixela_graph_id:)
+  def initialize(twitter_id:, twilog_key:, pixela_username:, pixela_token:, pixela_graph_id:)
     raise "pixela_username is required" unless pixela_username
     raise "pixela_token is required"    unless pixela_token
     raise "pixela_graph_id is required" unless pixela_graph_id
 
-    @twilog = Twilog.new(twitter_id)
+    @twilog = Twilog.new(twitter_id:, key: twilog_key)
 
     @client = Pixela::Client.new(username: pixela_username, token: pixela_token)
     @graph = @client.graph(pixela_graph_id)
