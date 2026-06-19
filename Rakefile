@@ -6,6 +6,7 @@ task :environment do
 
   @tweet_pixels = TweetPixels.new(
     twitter_id:      ENV["TWITTER_ID"],
+    twilog_key:      ENV["TWILOG_KEY"],
     pixela_username: ENV["PIXELA_USERNAME"],
     pixela_token:    ENV["PIXELA_TOKEN"],
     pixela_graph_id: ENV["PIXELA_GRAPH_ID"],
